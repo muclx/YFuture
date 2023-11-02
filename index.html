@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YFuture</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="jquery.scrollTo.min.js"></script>
+    <script>
+        var numer=0;    ///wylosowana liczba od 1-5
+        var timer1=0;
+        var timer2=0;
+        window.onload =zmienslajd;
+        function ustawslajd(nrslajdu)
+        {
+            clearTimeout(timer1);//konczy czas
+            clearTimeout(timer2);
+            numer=nrslajdu-1;
+            schowaj();
+            setTimeout("zmienslajd()",300);
+        }
+        function schowaj()
+        {
+            $("#slider").fadeOut(300);
+        }
+
+        
+        function zmienslajd()
+        {
+            numer++; 
+            if(numer>3) numer=1;
+            var plik="<img src=\"img/freak" + numer +".png\"/>"; //bierze obrazy pokolei 
+            document.getElementById("slider").innerHTML=plik;
+            $("#slider").fadeIn(300);
+
+        }
+
+
+    </script>
+    
+    
+    <script>
+    jQuery(function($)
+    {
+        //zresetuj scrolla
+        $.scrollTo(0);
+        $('#l0').click(function(){$.scrollTo($('#slid'),1000);});
+        $('#l1').click(function(){$.scrollTo($('#abus'),1000);});
+        $('#l2').click(function(){$.scrollTo($('#contact'),1000);});
+        $('#btn').click(function(){$.scrollTo($('#sec'),1000);});
+        $('#logo').click(function(){$.scrollTo($('#start'),1000);});
+    }
+    );
+</script>
+</head>
+<body>
+    <header id="start">
+        <a href="#" class="logo">Yfuture</a>
+        <ul>
+            <li><a id="l0" href="#" class="aktiv">Products</a></li>
+            <li><a id="l1" href="#">About</a></li>
+            <li><a id="l2" href="#">Contact</a></li>
+            <li><a id="l3" href="#">Menu</a>
+            <ol>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Bag</a></li>
+            </ol>
+            </li>
+        </ul>
+    </header>
+    <section>
+        <img src="img/backround.jpg" alt="backround">
+        <img id="jordan" src="img/jordan.png" alt="shoe">
+            <h2 id="text">It's about your future</h2>
+            <a href="#sec" id="btn">Just enter</a>
+    </section>
+    <article>
+         
+        <div id="sec">
+            <h2>Future products</h2>
+             <a href="#" id="logo"><span style="color:rgb(34, 43, 99);">Y</span>Future</a>
+                <div class="grid-item item-1">
+                    <p>Air Jordan 4</p>
+                        <h3>Ponad styl. <br>  </h3> <p>Już od 2450 zł</p>
+                        <img src="img/jordan.png" alt="buty">
+                </div>
+                <div class="grid-item item-2">
+                    <p>Air Jordan Luka Doncic</p>
+                        <h3>Po prostu. <br>  </h3> <p>Już od 410 zł</p>
+                        <img src="img/lukajordan.png" alt="buty">
+                </div>
+                <div class="grid-item item-3">
+                    <p>Air Jordan 1 High Chicago</p>
+                        <h3>Klasycznie. <br>  </h3> <p>Już od 2399 zł</p>
+                        <img src="img/jordan1.png" alt="buty">
+                </div>   
+                
+                <div id="slid" class="grid-item item-4">
+                    <p>Zoom Freak 3</p>
+                        <h3>Komfort na wyższym poziomie. <br>  </h3> <p>Już od 540 zł</p>
+                        <span onclick="ustawslajd(1)" class="color-black"></span>
+                        <span onclick="ustawslajd(2)" class="color-white"></span>
+                        <span onclick="ustawslajd(3)" class="color-pink"></span>
+                        <div id="slider"></div>
+        </div>
+
+        </div>
+
+
+
+    </article>
+    <footer>
+        <div id="footer">
+            <div id="contact" class="f-box">
+                <h3>Contact</h3>
+                <span>Email: YFuturecompany@gmail.com <br> Instagram: YFuture <br> Github: muclx</span>
+            </div>
+            <div id="abus" class="f-box">
+                <h3>About us</h3>
+                <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br>
+                 Magnam excepturi accusantium qui tempore suscipit fugiat <br> quidem dignissimos, quae distinctio nobis.</span>
+            </div>
+            <div id="history" class="f-box m" > 
+                <h3>Our history</h3>
+                <span>We are here to create the future. <br>
+                Copywright &copy; 2023 YFuture Inc.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let shoes=document.getElementById("jordan");
+        let text=document.getElementById("text");
+        let btn=document.getElementById("btn");
+        window.addEventListener('scroll',function(){
+            let value = window.scrollY;
+            shoes.style.marginTop=value*1.2+'px';
+            shoes.style.transform='rotate('+value*0.4+'deg)';
+            text.style.marginRight=value*7+'px';
+            btn.style.marginTop=value*1.6+'px';
+        })
+    </script>
+
+    
+</body>
+</html>
